@@ -42,7 +42,7 @@
     </div>
     <div id="footer" class="border-t">
         <ul class="flex-wrap" >
-            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >云API</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" ></li>
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >端API</li>
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >开发</li>
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >文档</li>
@@ -54,7 +54,7 @@
 <script type="text/javascript" src="script/api.js"></script>
 <script type="text/javascript">
     apiready = function () {
-        $api.fixStatusBar( $api.dom('header') );
+        $api.fixStatusBar( $api.dom('header') ); //设置顶部header向下移，不会盖着信号栏
         api.setStatusBarStyle({
             style: 'dark',
             color: '#6ab494'
