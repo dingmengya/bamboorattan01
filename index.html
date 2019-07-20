@@ -48,11 +48,25 @@
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >个人中心</li>
         </ul>
     </div>
+    <div id="nav" class="nav" onclick="openNew()" tapmode="">
+      竹属种
+    </div>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="script/api.js"></script>
 <script type="text/javascript">
+
+function openNew(){
+  api.openWin({
+      name: 'newdemo',
+      url: 'html/frame1_win.html',
+      pageParam: {
+          name: 'test'
+      }
+  });
+
+}
     apiready = function () {
         $api.fixStatusBar( $api.dom('header') ); //设置顶部header向下移，不会盖着信号栏
         api.setStatusBarStyle({
