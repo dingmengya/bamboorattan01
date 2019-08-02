@@ -12,6 +12,20 @@
     </style>
 </head>
 <body>
-    <div class="empty">竹属种</div>
+    
+    <div id="nav" class="nav" onclick="openNew()" tapmode="">
+    竹属种
+    </div>
 </body>
+<script>
+  function openNew(){
+    api.openWin({
+      name: 'newdemo',
+      url: 'html/frame1_win.html',
+      pageParam: {
+          name: 'test'
+      }
+  });
+}
+</script>
 </html>
