@@ -12,8 +12,8 @@
     </style>
 </head>
 <body>
-    
-    <div id="nav" class="nav" onclick="openNew()" tapmode="">
+
+    <div id="nav" class="empty" onclick="openNew()" tapmode="">
     竹属种
     </div>
 </body>
@@ -21,7 +21,7 @@
   function openNew(){
     api.openWin({
       name: 'newdemo',
-      url: 'html/frame1_win.html',
+      url: 'frame1_win.html',
       pageParam: {
           name: 'test'
       }
