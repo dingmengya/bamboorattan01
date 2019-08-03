@@ -20,7 +20,7 @@
                     <div class="aui-card-list-content">
                         <img src="../image/d1.jpg">
                     </div>
-                    <div class="aui-card-list-header aui-font-size-14">灰竹</div>
+                    <div class="aui-card-list-header aui-font-size-14" onclick="openNew1()" tapmode="">灰竹</div>
                 </div>
             </div>
             <div class="aui-col-xs-6">
@@ -87,5 +87,16 @@
     apiready = function(){
         api.parseTapmode();
     };
+</script>
+<script>
+  function openNew1(){
+    api.openWin({
+      name: 'newdemo1',
+      url: 'frame4.html',
+      pageParam: {
+          name: 'test1'
+      }
+  });
+}
 </script>
 </html>
