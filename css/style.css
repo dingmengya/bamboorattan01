@@ -8,7 +8,7 @@ html,body {  font-size:14px; height:100%;  }
 .border-t,
 .border-b{ position:relative;  }
 .border-t:before,
-.border-b:after{     content: '';     position: absolute;     left: 0;  top:0;     background: #ddd;   right:0;    height: 1px;     -webkit-transform: scaleY(0.5);             transform: scaleY(0.5);     -webkit-transform-origin: 0 0;             transform-origin: 0 0; }
+.border-b:after{     content: '';     position: absolute;     left: 0;  top:0;     background: #a6ffa6;   right:0;    height: 1px;     -webkit-transform: scaleY(0.5);             transform: scaleY(0.5);     -webkit-transform-origin: 0 0;             transform-origin: 0 0; }
 .border-b:after{ top:auto; bottom:0;  }
 
 #wrap{ height: 100%; }
