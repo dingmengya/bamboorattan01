@@ -1433,7 +1433,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	top: 0;
 	line-height: 2.25rem;
 	background-color: #dfffdf;
-	color: #ffffff;
+	color: #323237;
 }
 .aui-title a {
 	color: inherit;
