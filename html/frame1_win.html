@@ -169,11 +169,8 @@
       dataTpye:'json',
       },function(ret,err){
       api.hideProgress();//隐藏加载进度框
-      if(ret.code=200){
-        for(var i=0;i<ret.length;i++){
-        var html='<br>'+'ID：'+ret[i].id+'<br>'+'姓名：'+ret[i].name+'<br>'+'性别:'+ret[i].sex+'<br>'+'年龄'+ret[i].age;
-        document.write(html);
-        }
+      if(ret.code==200){
+        
       }else{
       api.alert({msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)});
       }
