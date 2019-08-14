@@ -31,7 +31,7 @@
         <ul class="aui-list aui-list-noborder">
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
-                    <button onclick="showPersonInfo()">刚竹属</button>
+                    <button onclick="showPersonInfo()" class="aui-list-item-title">刚竹属</button>
                 </div>
             </li>
             <li class="aui-list-item">
@@ -166,7 +166,7 @@
       method:'get',
       cache:'false',
       timeout:30,
-      dataTpye:'text',
+      dataTpye:'json',
       },function(ret,err){
       api.hideProgress();//隐藏加载进度框
       if(ret){
