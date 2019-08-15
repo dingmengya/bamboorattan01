@@ -170,8 +170,9 @@
       },function(ret,err){
       api.hideProgress();//隐藏加载进度框
       if(ret.code==200){
-        res = $api.jsonToStr(ret);
-        console.log(res);
+        var genuses=ret.data;
+        loadSpec(genuses);
+
       }else{
       api.alert({msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)});
       }
