@@ -31,7 +31,7 @@
         <ul class="aui-list aui-list-noborder">
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
-                    <button onclick="showPersonInfo()" class="aui-list-item-title">刚竹属</button>
+                    <div onclick="loadGenus()" class="aui-list-item-title">刚竹属</div>
                 </div>
             </li>
             <li class="aui-list-item">
@@ -134,6 +134,9 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+
+    var baseUrl="http://47.111.135.7:8081";
+
     apiready = function(){
         api.parseTapmode();
         var header = $api.byId('aui-header');
@@ -158,29 +161,21 @@
         api.closeWin({
         });
     }
-    function showPersonInfo(){
-      api.showProgress();//显示加载进度框
-      //使用api.ajax请求数据，具体使用方法和参数请看官方文档，这里使用get方法演示
-      api.ajax({
-      url:'http://47.111.135.7:8081/spec/findAll',//如果地址访问不到会请求出错，请填写自己的接口地址
-      method:'get',
-      cache:'false',
-      timeout:30,
-      dataTpye:'json',
-      },function(ret,err){
-      api.hideProgress();//隐藏加载进度框
-      if(ret.code==200){
-        var genuses=ret.data;
-        loadSpec(genuses);
-
-      }else{
-      api.alert({msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)});
-      }
-      });
+    function loadGenus(){
+        api.ajax({
+            url:baseUrl + 'genus/findAll',
+            type:'GET',
+            success:function(response){
+                if(response.code==200){
+                    var genuses=response.data;
+                    loadSpec(genuses);
+                }
+            }
+        });
     }
     function loadSpec(genuses){
         api.ajax({
-            url:baseUrl+ '/spec/findAll',
+            url:baseUrl + 'spec/findAll',
             type:'GET',
             success:function(response){
                 if(response.code==200){
