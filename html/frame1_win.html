@@ -179,7 +179,7 @@
       });
     }
     function loadSpec(genuses){
-        $.ajax({
+        api.ajax({
             url:baseUrl+ '/spec/findAll',
             type:'GET',
             success:function(response){
