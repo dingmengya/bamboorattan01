@@ -31,7 +31,7 @@
         <ul class="aui-list aui-list-noborder">
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
-                    <button onclick="loadSpec()" class="aui-list-item-title">刚竹属</button>
+                    <button onclick="loadGenus()" class="aui-list-item-title">刚竹属</button>
                 </div>
             </li>
             <li class="aui-list-item">
@@ -161,26 +161,26 @@
         api.closeWin({
         });
     }
-    // function loadGenus(){
-    //   api.showProgress();//显示加载进度框
-    //   api.ajax(
-    //   {
-    //     url: baseUrl + 'genus/findAll',    
-    //     method:'get',     
-    //     cache:'false',
-    //     timeout:30,
-    //     dataType: 'json',
-    //     }, function(ret, err) {
-    //       api.hideProgress();//隐藏加载进度框
-    //       if (ret.code==200)
-    //        {              //由于是异步，把处理代码放进来你造吗
-    //          var genuses=response.data;
-    //          loadSpec(genuses);
-    //        } else {
-    //          api.alert({msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)});
-    //        }
-    //      });
-    //    }
+    function loadGenus(){
+      api.showProgress();//显示加载进度框
+      api.ajax(
+      {
+        url: baseUrl + 'genus/findAll',    
+        method:'get',     
+        cache:'false',
+        timeout:30,
+        dataType: 'json',
+        }, function(ret, err) {
+          api.hideProgress();//隐藏加载进度框
+          if (ret.code==200)
+           {              //由于是异步，把处理代码放进来你造吗
+             var genuses=response.data;
+             loadSpec(genuses);
+           } else {
+             api.alert({msg:('错误码：'+err.code+'；错误信息：'+err.msg+'网络状态码：'+err.statusCode)});
+           }
+         });
+       }
 
 
     // function loadGenus(){
