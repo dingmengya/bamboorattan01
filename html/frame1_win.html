@@ -156,20 +156,7 @@
                 h: 'auto'
             }
         })
-    };
-    function closeWin(){
-        api.closeWin({
-        });
-    }
-    // apiready = function(){
-    //   api.parseTapmode();
-    //   var header = $api.byId('aui-header');
-    //   $api.fixStatusBar(header);
-    //   var headerPos = $api.offset(header);
-    //   var body_h = $api.offset($api.dom('body')).h;
-    //   var classifyListH = $api.offset($api.byId('classify-list')).w;
-    //   document.getElementById("classify-list").style.height =  api.winHeight-headerPos.h-100+"px";
-    //   var classifyListH = $api.offset($api.byId('classify-list')).w;
+
 
         $("#gang").click(function (){
 
@@ -187,6 +174,11 @@
 
       });
     })
+  };
+  function closeWin(){
+      api.closeWin({
+      });
+  }
     // function loadGenus(){
     //   api.showProgress();//显示加载进度框
     //   api.ajax(
