@@ -147,17 +147,17 @@
         var body_h = $api.offset($api.dom('body')).h;
         var classifyListH = $api.offset($api.byId('classify-list')).w;
         document.getElementById("classify-list").style.height = api.winHeight-headerPos.h+"px";
-        api.openFrame({
-            name: 'frame1_frm',
-            url: 'frame1_frm.html',
-            bounces: true,
-            rect: {
-                x: classifyListH+5,
-                y: headerPos.h,
-                w: api.winWidth-classifyListH-5,
-                h: 'auto'
-            }
-        })
+        // api.openFrame({
+        //     name: 'frame1_frm',
+        //     url: 'frame1_frm.html',
+        //     bounces: true,
+        //     rect: {
+        //         x: classifyListH+5,
+        //         y: headerPos.h,
+        //         w: api.winWidth-classifyListH-5,
+        //         h: 'auto'
+        //     }
+        // })
 
 
         $("#gang").click(function (){
