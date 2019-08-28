@@ -12,6 +12,11 @@
         .aui-card-list {
             margin-bottom: 0;
         }
+        .aui-card-list-content{
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
         img{
           height: 100px;
         }
@@ -231,7 +236,7 @@ function loadSpeces(genusId,genusNameCh){
                             html+='\
                                 <div class="aui-col-xs-6">\
                                 <div class="aui-card-list">\
-                                    <div class="aui-card-list-content">\
+                                    <div class="aui-card-list-content" data-id="'+spec.specId+'">\
                                         <img src="'+img+'">\
                                     </div>\
                                     <div class="aui-card-list-header aui-font-size-14">\

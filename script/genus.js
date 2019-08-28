@@ -1,4 +1,5 @@
 $(function(){
+    var genusId = 54;
     loadGenus(genusId);
   });
   function loadGenus(genusId){

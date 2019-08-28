@@ -162,13 +162,15 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
 </body>
 <!-- <script type="text/javascript" src="..script/genus.js"></script> -->
-<script type="text/javascript" src="../script/api.js"></script>
+<!-- <script type="text/javascript" src="../script/api.js"></script> -->
 <script type="text/javascript" src="../script/ipaddress.js"></script>
-<script type="text/javascript" src="../script/jquery.min.js"></script>
-<script type="text/javascript" src="../script/bootstrap.js"></script>
-<script type="text/javascript" src="../script/summernote.js"></script>
+<!-- <script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/bootstrap.js"></script> -->
+<!-- <script type="text/javascript" src="../script/summernote.js"></script> -->
 <script type="text/javascript">
  apiready = function(){
    var genusId = 55;
@@ -231,7 +233,7 @@ function loadSpeces(genusId,genusNameCh){
                             html+='\
                                 <div class="aui-col-xs-6">\
                                 <div class="aui-card-list">\
-                                    <div class="aui-card-list-content">\
+                                    <div class="aui-card-list-content" data-id="'+spec.specId+'">\
                                         <img src="'+img+'">\
                                     </div>\
                                     <div class="aui-card-list-header aui-font-size-14">\

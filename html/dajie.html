@@ -14,6 +14,9 @@
         }
         img{
           height: 100px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
     </style>
 </head>
@@ -231,7 +234,7 @@ function loadSpeces(genusId,genusNameCh){
                             html+='\
                                 <div class="aui-col-xs-6">\
                                 <div class="aui-card-list">\
-                                    <div class="aui-card-list-content">\
+                                    <div class="aui-card-list-content" data-id="'+spec.specId+'">\
                                         <img src="'+img+'">\
                                     </div>\
                                     <div class="aui-card-list-header aui-font-size-14">\

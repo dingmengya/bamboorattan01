@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/> -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <!-- <link href="css/nifty.min.css" rel="stylesheet"> -->
+    <!--Demo [ DEMONSTRATION ]-->
+    <!-- <link href="css/nifty-demo.min.css" rel="stylesheet"> -->
+    <!-- <link id="theme" href="../css/themes/type-c/theme-lime.min.css" rel="stylesheet">-->
+    <!-- <link id="theme" href="css/theme-lime.css" rel="stylesheet"> -->
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <!-- <link href="css/pace.min.css" rel="stylesheet"> -->
+    <style>
+        /*这里修改提示框的字体样式*/
+        .row{
+            background-color: white;
+            /*width: 240px;*/
+            margin: auto;
+        }
+        .info p{
+          text-align: left;
+          margin-top: 15px;
+          width: 240px;
+        }
+        .info img{
+            width: 240px;
+            /*background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;*/
+        }
+    </style>
+
+</head>
+<body>
+  <div class="row">
+    <div class="row info">
+      <div class="col-xs-12">
+        <h4 id="specNameCh"></h4>
+        <p></p>
+        <!-- <img src="../image/d1.jpg"> -->
+      </div>
+    </div>
+  </div>
+  <!-- <script type="text/javascript" src="../script/propper.min.js"></script> -->
+  <script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript" src="../script/ipaddress.js"></script>
+<script type="text/javascript">
+apiready = function(){
+    var specId=getUrlParam('specId');
+    // console.log(specId);
+    loadSpec(specId);
+};
+//根据名称获取地址栏的参数值
+var getUrlParam = function (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]); return null;
+}
+function loadSpec(specId){
+    api.ajax({
+        url:baseUrl+'/spec/findId/'+specId,
+        method: 'GET',
+        dataType:'json',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        data: {
+          values: {
+          name: 'elements'
+          }
+        }
+      },function(ret,err){
+            if(ret){
+                var spec=ret.data;
+                if(spec!=null){
+                  $('#specNameCh').html(spec.specNameCh);
+                  var files=spec.files;
+                  var imgsHtml='';
+                  for(var i=0;i<files.length;i++){
+                      var file=files[i];
+                      if(file!=null&&file.type=='image'){
+                          imgsHtml+='<img src="'+baseUrl+'/'+file.path+'">';
+                          // console.log(imgsHtml);
+                      }
+                  }
+                  var html='\
+                  <div class="row">\
+                  <div class="row info">\
+                  <div class="col-xs-12">\
+                  <h4 id="specNameCh">'+spec.specNameCh+'</h4>\
+                  <p>'+spec.specDesc+'</p>'
+                  +imgsHtml+'\
+                  </div>\
+                  </div>\
+                  </div>\
+                  ';
+                  console.log(html);
+                  $('.info').html(html);
+                }else {
+                api.alert({ msg: JSON.stringify(err) });
+                }
+              }
+          });
+      }
+</script>
+
+</html>

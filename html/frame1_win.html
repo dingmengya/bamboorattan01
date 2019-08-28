@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <style type="text/css">
@@ -21,6 +21,14 @@
         .aui-list .aui-list-item-title {
             font-size: 0.7rem;
         }
+        .aui-list-item:hover{
+          background-color: #fff5ee;
+          outline: thin dotted #dfffdf;
+          outline: 5px auto -webkit-focus-ring-color;
+          outline-offset: -2px;
+        }
+
+
 
 
     </style>
@@ -163,11 +171,13 @@
             </li>
         </ul>
     </section>
+    <!-- <script type="text/javascript" src="../script/propper.min.js"></script> -->
+    <script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
 </body>
-<script type="text/javascript" src="../script/jquery.min.js"></script>
+
 <script type="text/javascript" src="../script/api.js"></script>
 <!-- <script type="text/javascript" src="../script/ipaddress.js"></script> -->
-<script type="text/javascript" src="../script/bootstrap.js"></script>
 <script type="text/javascript">
     apiready = function() {
         api.parseTapmode();
@@ -178,8 +188,8 @@
         var classifyListH = $api.offset($api.byId('classify-list')).w;
         document.getElementById("classify-list").style.height = api.winHeight - headerPos.h + "px";
         // api.openFrame({
-        //     name: 'frame1_frm',
-        //     url: 'frame1_frm.html',
+        //     name: 'gang',
+        //     url: 'gang.html',
         //     bounces: true,
         //     rect: {
         //         x: classifyListH+5,
