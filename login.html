@@ -1,118 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="icon" href="img/image/favicon.ico"/> -->
-    <title>登录页面</title>
-    <!--STYLESHEET-->
-    <!--=================================================-->
-    <!--Open Sans Font [ OPTIONAL ]-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="css/nifty.min.css" rel="stylesheet">
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="css/nifty-demo-icons.min.css" rel="stylesheet">
-    <link href="css/nifty-demo.min.css" rel="stylesheet">
-    <!--Magic Checkbox [ OPTIONAL ]-->
-    <link href="css/magic-check.min.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
-    <link id="theme" href="css//theme-lime.css" rel="stylesheet">
-    <!--JAVASCRIPT-->
-    <!--========
-   ===================================-->
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <link href="css/pace.min.css" rel="stylesheet">
-    <script src="script/pace.min.js"></script>
-    <!--jQuery [ REQUIRED ]-->
-    <script src="script/jquery-2.2.4.min.js"></script>
-    <!--jQuery.cookie [ REQUIRED ]-->
-    <script src="script/jquery.cookie.js"></script>
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="script/bootstrap.min.js"></script>
-    <!--<script src="js/demo/bg-images.js"></script>-->
-    <script src="script/unslider.js" type="text/javascript"></script>
-    <script src="script/bootstrapValidator.min.js"></script>
-    <script src="script/login.js" type="text/javascript"></script>
-    <script src="script/pace.min.js"></script>
-    <!--NiftyJS [ RECOMMENDED ]-->
-    <script src="script/nifty.min.js"></script>
-    <!--<script src="js/bambootattan_pc_js/common.js"></script>-->
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <style>
+    header {
+        width: 100%;
+        height: 50px;
+        background-color: white
+    }
+
+    header .back {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        background-color: white ;
+        background-position: 12px 16px;
+        background-size: 11px 18px;
+        background-repeat: no-repeat;
+    }
+
+    header h1 {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #fff;
+        font-size: 20px;
+    }
+
+    header .right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+    }
+    </style>
 </head>
 
-<!--<body>-->
-<body onLoad="createCode();document.getElementById('userName').focus();GetCookie();" >
-<div id="container" class="cls-container">
-    <div class="container">
-        <div class="fl form-box">
-            <h2>
-                    <div class="panel panel-trans text-center">
-                    <span style="font-size:16px;color:black;"><b>竹藤种质资源数据管理平台</b></span>
-                </div>
-            </h2>
-
-            <form class="form-horizontal" role="form" id="form-login">
-                <div class="form-group has-feedback">
-                    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入用户账号"  style="border-radius: 4px;">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                </div>
-
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="请输入密码" style="border-radius: 4px;">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-
-                <div class="row">
-                 <div class="col-xs-5">
-                    <div class="form-group">
-                        <!--<label class="col-sm-3 control-label">验证码：</label>-->
-                        <input class="form-control" type="tel" id="yzm" name="verify_input" placeholder="请输入验证码" maxlength="4" style="border-radius: 4px;">
-                        <!--<div class="col-sm-3">-->
-                            <!--<input type="text" id="yzm" size="5" class="form-control">-->
-                        </div>
-                     </div>
-                     <div class="col-xs-5" style="padding-left: 15px;">
-                        <input type="button" id="checkCode" class="form-control" onClick="createCode()" title="刷新验证码" style="width:60px;background-image:url('image/load-img.png') !important;font-size:14px;font-weight:bolder
-                                   ;text-align:center;border:0;letter-spacing:1px;font-family:Arial;font-style:italic; " />
-                    </div>
-                 </div>
-
-
-                <!--后台传验证码-->
-                <!--<div class="row">-->
-                    <!--<div class="col-xs-7">-->
-                        <!--<div class="form-group">-->
-                            <!--<input class="form-control" type="tel" id="verify_input" name="verify_input" placeholder="请输入验证码" maxlength="4">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-xs-5" style="padding-left: 15px;">-->
-                        <!--<a href="javascript:void(0);" title="点击更换验证码">-->
-                            <!--<img id="imgVerify" src="" alt="更换验证码" height="32" width="90%" style="border: 1px solid;">-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <div class="checkbox pad-btm text-left">
-                    <input  class="magic-checkbox" id="remember-password" type="checkbox">
-                    <label for="remember-password">记住密码</label>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!--<button class="btn btn-success btn-lg btn-block btn-flat" name="submit"  id="login"  style="margin-top: 10px;height:40px;">登 录</button>-->
-                        <button class="btn btn-success btn-lg btn-block btn-flat" name="submit" onClick="checkInCorrect();validate()" id="login"  style="margin-top: 10px;height:40px;">登 录</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 pad-top pad-btm" align="left" valign="middle">
-                        <p>没有帐号？<a href="register.html">[立即注册]</a></p>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<body>
+    <header id="header">
+        <div class="back" tapmode onclick="api.closeWin();"></div>
+        <h1>登录</h1>
+        <div class="right" tapmode onclick="fnOpenRegisterWin();">注册</div>
+    </header>
 </body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+apiready = function() {
+    var header = $api.byId('header');
+    $api.fixStatusBar(header);
+    var headerH = $api.offset(header).h;
+    api.openFrame({
+        name: 'login_frame',
+        url: './login_frame.html',
+        rect: {
+            x: 0,
+            y: headerH,
+            w: 'auto',
+            h: 'auto'
+        },
+        pageParam: {
+            name: 'test'
+        },
+        bounces: true
+    });
+};
+
+function fnOpenRegisterWin () {
+    api.openWin({
+        name: 'register',
+        url: './register.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+}
+</script>
+
 </html>

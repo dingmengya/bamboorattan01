@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>底部导航</title>
+    <title>主页底部导航</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css"/>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <style>
@@ -27,6 +27,8 @@
         }
     </style>
 </head>
+<script src="script/api.js"></script>
+<script src="script/ipaddress.js"></script>
 <body>
 
 <div id="wrap" class="flex-wrap flex-vertical">
@@ -53,19 +55,16 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="script/api.js"></script>
 <script type="text/javascript">
-
-
     apiready = function () {
-        $api.fixStatusBar( $api.dom('header') ); //设置顶部header向下移，不会盖着信号栏
-        api.setStatusBarStyle({
-            style: 'dark',
-            color: '#6ab494'
-        });
-        funIniGroup();
-    }
 
+      $api.fixStatusBar( $api.dom('header') ); //设置顶部header向下移，不会盖着信号栏
+      api.setStatusBarStyle({
+          style: 'dark',
+          color: '#6ab494'
+      });
+      funIniGroup();
+};
     function funIniGroup(){
         var eHeaderLis = $api.domAll('header li'),
             frames = [];
@@ -74,7 +73,7 @@
                     name: 'frame'+i,
                     url: './html/frame'+i+'.html',
                     bgColor : 'rgba(0,0,0,.2)',
-                    bounces:true
+                    bounces:false
                 } )
         }
         api.openFrameGroup({
@@ -113,5 +112,5 @@
             name: 'group',
             index: index
         });
-    }
+}
 </script>

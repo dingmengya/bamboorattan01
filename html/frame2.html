@@ -1,17 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>开发</title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <style>
-        .empty{ text-align: center; padding: 120px 0; }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<!-- <link rel="icon" href="img/image/favicon.ico"/> -->
+	<title>搜索界面</title>
+	<!--Open Sans Font [ OPTIONAL ]-->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" href="css/sousupage.css">
+	<link rel="stylesheet" href="css/common.css"> -->
+	<!--Bootstrap Stylesheet [ REQUIRED ]-->
+
+	<!--Nifty Stylesheet [ REQUIRED ]-->
+	<link href="css/nifty.min.css" rel="stylesheet">
+	<!-- <link id="theme" href="css/theme-lime.css" rel="stylesheet"> -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!--jQuery [ REQUIRED ]-->
+	<script src="script/jquery-2.2.4.min.js"></script>
+	<!--BootstrapJS [ RECOMMENDED ]-->
+	<script src="script/bootstrap.min.js"></script>
+	<script src="script/common.js"></script>
+	<script src="script/search.js"></script>
+
 </head>
-<body>
-    <div class="empty">竹藤检索</div>
+<body style="background-color: #8BC34A;">
+
+<div class="container pad-no">
+	<div class="pad-top pad-btm container" style="margin-top:0;position:relative;z-index: 9;background-color: #ecf0f5;">
+		<div class="input-group">
+			<input id="kw" type="text" class="form-control" placeholder="搜你想搜的" size="30" baiduSug="1" style="width:200px;">
+			<button id="bnt_search"  class="btn btn-success">检索</button>
+		</div>
+	</div>
+</div>
+
+<div class="container pad-btm pad-top" style="margin-top:5px">
+
+	<!--Page content-->
+	<!--===================================================-->
+	<div id="page-content">
+		<div class="panel">
+			<div class="panel-body">
+				<ul class="list-group bord-no">
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading mar-no">
+							<a class="h4 text-primary" href="#">Nifty - Responsive Admin Template</a>
+						</div>
+						<p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+
+
+	</div>
+	<!--===================================================-->
+	<!--End page content-->
+</div>
+
 </body>
+
+	<!-- <script src="script/common.js"></script> -->
+<!-- <script type="text/javascript">
+apiready = function(){
+		$('#bnt_search').on('click',function(){
+			var keyword=$("#kw").val();//搜索内容
+			var key_word=getUrlParam("keyword");//获取地址栏中keyWord的值
+			//如果搜索内容不为空，这跳转到搜索页面
+			if($.trim(key_word)!=''){
+					search(key_word);
+			}
+		});
+
+};
+
+
+//根据名称获取地址栏的参数值
+var getUrlParam = function (name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return decodeURI(r[2]); return null;
+}
+//获取搜索内容
+function search(keyWord){
+		api.ajax({
+				url:baseUrl+'/Elasticsearch/search',
+				method: 'GET',
+				data: {
+					"page":1,
+					"size":2,
+					"keywords":keyWord
+				}
+				},function(ret,err){
+						if(ret){
+								var result=ret.data;
+								if(result){
+										var _html='';
+										for(var i=0;i<result.length;i++) {
+												var item=result[i];
+												//没有图片
+												_html += '\
+												<li class="list-group-item list-item-lg">\
+												  <div class="media-heading mar-no">\
+															<a class="h4 text-primary" href="#">'+item.spec_name_ch+'</a>\
+													</div>\
+													<p class="text-sm">'+item.spec_desc+'</p>\
+												</li>\
+														';
+										}
+										$('.bord-no').html(html);
+								}
+						}else {
+								api.alert({ msg: JSON.stringify(err) });
+						}
+				});
+}
+</script> -->
 </html>

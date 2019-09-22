@@ -49,20 +49,22 @@ function validate() {
 function login(){
 
     var userName = $("#userName").val();    // 获取id为username的<input>框数据
+
     var password = $("#password").val();    // 获取id为password的<input>框数据
     var formData={
         "userName": userName,
         "password": password
     }
     $.ajax({
-        url: baseUrl + '/user/login',	    //请求路径
-        type: 'POST',				        //请求方式
-        //data: JSON.stringify(formData),	    //数据
-        data: formData,	                    //数据
-        //contentType: 'application/json',
-        success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
+      url: baseUrl + '/user/login',	    //请求路径
+      type: 'POST',				        //请求方式
+      //data: JSON.stringify(formData),	    //数据
+      data: formData,	                    //数据
+      //contentType: 'application/json',
+      success: function (res) {  // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
            //res.code=400;
-            if (res.code === 200) {
+            if (res.code===200) {
+
                 jsessionId=res.data.jsessionid;
                 sessionStorage.setItem("jsessionId",jsessionId);//该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值
                 //$.cookie('BAM_USERNAME',formData.userName,{ expires: 365});
@@ -101,10 +103,10 @@ function login(){
                 });
                 window.location.href = "index.html";
             }else if(res.code === 404){
-                window.location.href='page-404.html';
+                window.location.href='page-page-404.html';
             }
             else if(res.code === 505){
-                window.location.href='page-500.html';
+                window.location.href='page-page-500.html';
             } else{
                 //alert("账号或密码错误");
                 $.niftyNoty({
@@ -116,7 +118,7 @@ function login(){
                 });
             }
         }
-    });
+      });
 }
 //判断用户名和密码是否为空
 function checkInCorrect()
@@ -191,7 +193,9 @@ saveInfo = function(){
         var isSave = document.getElementById('remember-password').checked;   //保存按键是否选中
         if (isSave) {
             var usernm = document.getElementById('userName').value;
+
             var userpsw = document.getElementById('password').value;
+
             if(usernm!="" && userpsw!=""){
                 SetCookie(usernm,userpsw);
             }

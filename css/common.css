@@ -1,0 +1,332 @@
+.pad-top-sm {
+    padding-top: 5px
+}
+
+.pad-btm-sm {
+    padding-bottom: 5px
+}
+
+.pad-lft-sm {
+    padding-left: 5px
+}
+
+.pad-rgt-sm {
+    padding-right: 5px
+}
+
+.pad-hor-sm {
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.pad-ver-sm {
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+
+.pad-all-sm {
+    margin: 5px
+}
+
+.mar-all-sm {
+    margin: 5px
+}
+
+.mar-top-sm {
+    margin-top: 5px;
+}
+
+.mar-btm-sm {
+    margin-bottom: 5px
+}
+
+.mar-lft-sm {
+    margin-left: 5px
+}
+
+.mar-rgt-sm {
+    margin-right: 5px
+}
+
+.mar-hor-sm {
+    margin-left: 5px;
+    margin-right: 5px
+}
+
+.mar-ver-sm {
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.text-tf-05{
+    transform: scale(0.5);
+}
+
+
+.tooltip-inner{
+    word-break: break-all;
+}
+
+
+.bs-checkbox {
+    min-width: 36px;
+    max-width: 36px;
+    width: 36px;
+}
+.modal-full-screen{
+    width:100%;
+}
+/*#mainnav-menu li a{*/
+    /*!*font-size: 17px;*!*/
+    /*font-size: 16.80px;*/
+/*}*/
+
+/*
+#mainnav-menu li span{
+    font-size: 25px;
+}
+
+#mainnav-menu li a{
+    font-size: 18px;
+}*/
+
+/*body{*/
+    /*font-family: '楷体' !important;*/
+/*}*/
+
+
+#mainnav-menu>li>a{
+    font-size: 20px;
+    font-family: '楷体' !important;
+}
+#mainnav-menu>li>ul>li>a{
+    font-size: 18px;
+    font-family: '楷体' !important;
+}
+#mainnav-menu>li>ul>li>ul>li>a{
+    font-size: 16px;
+    font-family: '楷体' !important;
+}
+#mainnav-menu>li>ul>li>ul>li>ul>li>a{
+    font-size: 14px;
+    font-family: '楷体' !important;
+}
+#mainnav-menu>li>ul>li>ul>li>ul>li>ul>li>a{
+    font-size: 13px;
+    font-family: '楷体' !important;
+}
+#mainnav-menu ul li a .arrow {
+    height: 100%;
+    line-height: 100% !important;
+}
+
+
+
+
+#mainFckLoading .spiner-example .sk-spinner {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    float: left;
+    margin: 4px;
+}
+#mainFckLoading .spiner-example .sk-circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#mainFckLoading .spiner-example .sk-circle:before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 10%;
+    height: 10%;
+    /* background-color: #1ab394; */
+    background-color: #8bc34a;
+    border-radius: 100%;
+    -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
+    animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+#mainFckLoading .spiner-example .sk-circle2 {
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+#mainFckLoading .spiner-example .sk-circle3 {
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle4 {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle5 {
+    -webkit-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle6 {
+    -webkit-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    transform: rotate(150deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle7 {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle8 {
+    -webkit-transform: rotate(210deg);
+    -ms-transform: rotate(210deg);
+    transform: rotate(210deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle9 {
+    -webkit-transform: rotate(240deg);
+    -ms-transform: rotate(240deg);
+    transform: rotate(240deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle10 {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle11 {
+    -webkit-transform: rotate(300deg);
+    -ms-transform: rotate(300deg);
+    transform: rotate(300deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle12 {
+    -webkit-transform: rotate(330deg);
+    -ms-transform: rotate(330deg);
+    transform: rotate(330deg);
+}
+
+#mainFckLoading .spiner-example .sk-circle2:before {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+#mainFckLoading .spiner-example .sk-circle3:before {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+}
+
+#mainFckLoading .spiner-example .sk-circle4:before {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+#mainFckLoading .spiner-example .sk-circle5:before {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+#mainFckLoading .spiner-example .sk-circle6:before {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+
+#mainFckLoading .spiner-example .sk-circle7:before {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+#mainFckLoading .spiner-example .sk-circle8:before {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+#mainFckLoading .spiner-example .sk-circle9:before {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+
+#mainFckLoading .spiner-example .sk-circle10:before {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+
+#mainFckLoading .spiner-example .sk-circle11:before {
+    -webkit-animation-delay: -0.2s;
+    animation-delay: -0.2s;
+}
+
+#mainFckLoading .spiner-example .sk-circle12:before {
+    -webkit-animation-delay: -0.1s;
+    animation-delay: -0.1s;
+}
+
+@-webkit-keyframes sk-circleBounceDelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes sk-circleBounceDelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    40% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+table{
+     /*width:100px;*/
+     table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+ }
+td{
+    width:100%;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+    -o-text-overflow:ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+
+/*html,body{*/
+    /*cursor: url('../../img/image/图片1.png'),auto;*/
+/*}*/
+
+.floating-container{
+    z-index:99999 !important;
+}
+
+
+.navbar-top-links .tgl-menu-btn>a, .navbar-top-links .tgl-menu-btn>a:hover, .navbar-top-links .tgl-menu-btn>a:focus {
+    color: #8bc34a;
+}
+
+
+.navbar-top-links > li > a:not(.mainnav-toggle) > i {
+    color: #8bc34a;
+}
