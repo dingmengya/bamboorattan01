@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>竹属种详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<style>
+  header{ background-color: #dfffdf !important; color: black !important;}
+  #aui-header {
+
+  }
+  #aui-header .aui-iconfont {
+    color: black !important;
+  }
+        .aui-card-list {
+            margin-bottom: 0;
+        }
+        img{
+          height: 100px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+	</style>
+</head>
+<body>
+  <header class="aui-bar aui-bar-nav" id="aui-header">
+      <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+          <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div class="aui-title">竹属种图片</div>
+  </header>
+    <section class="aui-content aui-padded-l-5 aui-padded-r-10 aui-padded-t-5" id="genuses">
+        <div class="aui-row aui-row-padded">
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+            <div class="aui-col-xs-4">
+                <div class="aui-card-list">
+                    <div class="aui-card-list-content">
+                        <img src="../image/d3.jpg">
+                    </div>
+                    <div class="aui-card-list-header aui-font-size-14">竹属</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="../script/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/ipaddress.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        api.parseTapmode();
+        var header = $api.byId('aui-header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
+        var body_h = $api.offset($api.dom('body')).h;
+        loadGenus();
+        // api.ajax({
+        //   url:baseUrl+ '/genus/findAll',
+        //   type:'GET',
+        //   success:function(response){
+        //       if(response.code==200){
+        //           var genuses=response.data;
+        //           loadSpec(genuses);
+        //       }
+        //   }
+        // });
+    };
+
+    function loadGenus(){
+      api.ajax({
+          url: baseUrl+ '/genus/findAll',
+          method: 'GET',
+      },function(ret, err){
+          if (ret) {
+              var genuses = ret.data;
+              loadSpec(genuses);
+          }
+      });
+
+    }
+
+    function loadSpec(genuses){
+      api.ajax({
+          url: baseUrl+ '/spec/findAll',
+          method: 'GET',
+
+      },function(ret, err){
+          if (ret) {
+              var speces = ret.data;
+              var newGenuses = resetGenus(genuses,speces);
+              if(newGenuses.length>0){
+                var html='';
+                for(var i=0;i<newGenuses.length;i++){
+                  var genus=newGenuses[i];
+                  var data=[
+                      {
+                          specImgUrl:'',
+                          specName:'暂无'},
+                      {
+                          specImgUrl:'',
+                          specName:'暂无'},
+                      {
+                          specImgUrl:'',
+                          specName:'暂无'},
+                      {
+                          specImgUrl:'',
+                          specName:'暂无'}];
+                  if(typeof genus.speces!='undefined'&&genus.speces.length>0){
+                      for(var j=0;j<genus.speces.length;j++){
+                          var files=genus.speces[j].files;
+                          if(files!=null&&files.length>0){
+                              for(var k=0;k<files.length;k++){
+                                  if(files[k].type=='image'){
+                                      data[j].specImgUrl =baseUrl+'/'+ files[k].path;
+                                      data[j].specName=genus.speces[j].specNameCh;
+                                      break;
+                                  }
+                              }
+                          }
+                      }
+                  }
+                  html+='\
+                      <div class="aui-col-xs-4">\
+                      <div class="aui-card-list">\
+                      <div class="aui-card-list-content" data-id="'+genus.genusId+'">\
+                        <img src="'+data[0].specImgUrl+'">\
+                        </div>\
+                      <div class="aui-card-list-header aui-font-size-14">'+genus.genusNameCh+'\
+                      </div>\
+                      </div>\
+                      </div>'
+                }
+                $('#genuses').html(html);
+                $('.aui-card-list-content').on('click',function(){
+                    location.href='genusdetail.html?genusId='+$(this).attr('data-id');
+                });
+              }
+          }
+      });
+
+}
+function resetGenus(genuses,speces){
+    if(genuses==null||genuses.length<=0){
+        return [];
+    }
+    if(speces==null||speces.length<=0){
+        return genuses;
+    }
+    var newGenuses=[];
+    for(var i=0;i<genuses.length;i++){
+        var newGenus=genuses[i];
+        newGenus.speces=[];
+        for(var j=0;j<speces.length;j++){
+            var spec=speces[j];
+            if(spec!=null&&spec.genus!=null&&spec.genus.genusId==newGenus.genusId){
+                if(newGenus.speces.length<4){
+                    newGenus.speces.push(spec);
+                }else{
+                    newGenus.speces=replaceByHasImg(newGenus.speces,spec);
+                }
+            }
+        }
+        newGenus.speces=hasImgToTop(newGenus.speces);
+        newGenuses.push(newGenus);
+    }
+    return newGenuses;
+}
+function replaceByHasImg(speces,spec){
+    for(var i=0;i<speces.length;i++){
+        var hasImg=false;
+        for(var j=0;j<speces[i].files.length;j++){
+            if(speces[i].files[j].type=='image'&&speces[i].files[j].path!=null&&speces[i].files[j].path!=''){
+                hasImg=true;
+                break;
+            }
+        }
+        if(hasImg){
+            break;
+        }
+        var files=spec.files;
+        for(var j=0;j<files.length;j++){
+            if(files[j].type=='image'&&files[j].path!=null&&files[j].path!=''){
+                speces[i]=spec;
+            }
+        }
+    }
+    return speces;
+}
+//图片从上开始放
+function hasImgToTop(speces){
+    var newSpeces=[];
+    for(var i=0;i<speces.length;i++){
+        var hasImg=false;
+        for(var j=0;j<speces[i].files.length;j++){
+            if(speces[i].files[j].type=='image'&&speces[i].files[j].path!=null&&speces[i].files[j].path!=''){
+                hasImg=true;
+                break;
+            }
+        }
+        if(hasImg){
+            newSpeces.unshift(speces[i]);
+        }else{
+            newSpeces.push(speces[i]);
+        }
+    }
+    return newSpeces;
+}
+function closeWin(){
+    api.closeWin({
+    });
+}
+</script>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>竹种图片</title>
+    <title>藤种图片</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <style>
     header{ background-color: #dfffdf !important; color: black !important;}
@@ -26,19 +26,19 @@
       <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
           <span class="aui-iconfont aui-icon-left"></span>
       </a>
-      <div class="aui-title" id="specNameCh">刚竹</div>
+      <div class="aui-title" id="specNameCh">黄藤</div>
   </header>
     <section class="aui-content aui-padded-l-5 aui-padded-r-10 aui-padded-t-5">
         <div class="aui-row aui-row-padded">
 
           <div class="aui-col-xs-12">
-            <h4 id="specNameCh">刚竹</h4>
+            <h4 id="specNameCh">黄藤</h4>
             <h4 id="specNameLd">asdgshrth</h4>
           </div>
 
             <div class="aui-col-xs-12">
               <p>
-                刚竹的描述信息
+                黄藤的描述信息
               </p>
                 <div class="aui-card-list">
                     <div class="aui-card-list-content">
@@ -72,7 +72,7 @@ var getUrlParam = function (name) {
 }
 function loadSpec(specId){
     api.ajax({
-        url:baseUrl+'/spec/findId/'+specId,
+        url:baseUrl+'/rattanSpec/findId/'+specId,
         method: 'GET',
         dataType:'json',
         headers: {

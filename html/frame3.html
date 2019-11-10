@@ -45,18 +45,47 @@
                     <div class="aui-list-item-title" id="userUnit">所在部门</div>
                 </div>
             </li>
+            <div onclick="openFrame">登录</div>
+
         </ul>
     </section>
 </body>
-<!-- <script type="text/javascript" src="../script/api.js" ></script>
-<script type="text/javascript" src="../script/login.js" ></script>
+
 <script type="text/javascript">
-    apiready = function () {
-      $(function(){
-        $('#userAcct').html(login().userName);
+apiready = function(){
+  // var userAcct = $api.byId('userAcct');
+  // var userName = $api.byId('userName');
+  // var userPwd = $api.byId('userPwd');
+  // var roleName = $api.byId('roleName');
+  // var userUnit = $api.byId('userUnit');
+
+};
+
+    function goback () {
+        api.closeWin({name:'frame3.html'});
+    }
+
+    function openFrame(){
+      api.openFrame({
+          name: '',
+          url: '',
+          rect: {
+              x: 0,
+              y: 0,
+              w: 320,
+              h: 480
+          },
+          pageParam: {
+              name: 'test'
+          },
+          bounces: true,
+          bgColor: 'rgba(0,0,0,0)',
+          vScrollBarEnabled: true,
+          hScrollBarEnabled: true
       });
 
 
     }
-</script> -->
+
+</script>
 </html>

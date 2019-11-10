@@ -3,118 +3,259 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-	<!-- <link rel="icon" href="img/image/favicon.ico"/> -->
 	<title>搜索界面</title>
-	<!--Open Sans Font [ OPTIONAL ]-->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-	<!-- <link rel="stylesheet" href="css/sousupage.css">
-	<link rel="stylesheet" href="css/common.css"> -->
-	<!--Bootstrap Stylesheet [ REQUIRED ]-->
-
-	<!--Nifty Stylesheet [ REQUIRED ]-->
-	<link href="css/nifty.min.css" rel="stylesheet">
-	<!-- <link id="theme" href="css/theme-lime.css" rel="stylesheet"> -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!--jQuery [ REQUIRED ]-->
-	<script src="script/jquery-2.2.4.min.js"></script>
-	<!--BootstrapJS [ RECOMMENDED ]-->
-	<script src="script/bootstrap.min.js"></script>
-	<script src="script/common.js"></script>
-	<script src="script/search.js"></script>
-
 </head>
-<body style="background-color: #8BC34A;">
+<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+<style>
+body{
+	text-align: center;  /*网页居中*/
+}
+.row{
+	width: 350px;
+	margin:10px 10px auto 10px;
 
-<div class="container pad-no">
-	<div class="pad-top pad-btm container" style="margin-top:0;position:relative;z-index: 9;background-color: #ecf0f5;">
-		<div class="input-group">
-			<input id="kw" type="text" class="form-control" placeholder="搜你想搜的" size="30" baiduSug="1" style="width:200px;">
-			<button id="bnt_search"  class="btn btn-success">检索</button>
-		</div>
+}
+.info p{
+	padding: 20px 20px 0 20px;
+	text-align: left;
+}
+</style>
+<body>
+	<div class="row">
+	<div class="row info">
+	<div class="col-xs-12">
+	  <p>
+	    一粒种子可以改变一个世界,一个品种可以造福一个民族"。竹藤种质资源是世界植物资源和森林资源的重要组成部分，竹藤不仅经济价值高，观赏效果好，而且生态效益佳。是典型的集经济生态观赏效益于一体的多功能植物材料。竹藤种质资源的收集和保存，是当今全球性关切的问题之一。我国虽是世界竹类种质资源最为丰富的国家，但由于人为破坏，使上百种经济价值较高或有育种价值的竹种处于濒危境地，有的珍惜竹种甚至已趋枯竭灭绝。因此，开展竹藤种质资源的收集与保存迫在眉睫。我国自20世纪70年代开始着手建立一批有代表性的竹种园，目前采集到的结果是，已知竹种达到600多种，51个属。
+	  </p>
 	</div>
-</div>
-
-<div class="container pad-btm pad-top" style="margin-top:5px">
-
-	<!--Page content-->
-	<!--===================================================-->
-	<div id="page-content">
-		<div class="panel">
-			<div class="panel-body">
-				<ul class="list-group bord-no">
-					<li class="list-group-item list-item-lg">
-						<div class="media-heading mar-no">
-							<a class="h4 text-primary" href="#">Nifty - Responsive Admin Template</a>
-						</div>
-						<p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-					</li>
-				</ul>
+	</div>
+	<div class="col-sm-4 col-md-offset-4">
+			<div class="input-group input-group-sm">
+					<input type="text" name='key' oninput="changed()" id="kw" class="form-control" style="height: 45px;border: 1px solid #8bc34a;font-size:1.2em;" placeholder="种名、形态、性质等">
+					<span class="input-group-btn">
+							<button id="btn_search"  onclick="search_click()" name="submit" class="btn btn-success" style="height: 45px;width:60px;font-size: 15px;" type="button">检 索</button>
+							</span>
 			</div>
-		</div>
-
-
-
 	</div>
-	<!--===================================================-->
-	<!--End page content-->
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	</div>
+
+<div class="row">
+		<div class="col-sm-12">
+				<div id="page-content">
+
+						<div class="panel-body">
+								<table id="data_table" class="table"></table>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+						</div>
+
+				</div>
+		</div>
 </div>
 
 </body>
-
-	<!-- <script src="script/common.js"></script> -->
-<!-- <script type="text/javascript">
+<script src="script/jquery-2.2.4.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script type="text/javascript">
 apiready = function(){
-		$('#bnt_search').on('click',function(){
-			var keyword=$("#kw").val();//搜索内容
-			var key_word=getUrlParam("keyword");//获取地址栏中keyWord的值
-			//如果搜索内容不为空，这跳转到搜索页面
-			if($.trim(key_word)!=''){
-					search(key_word);
-			}
-		});
 
+	var keyWord=getUrlParam('keyWord');//获得地址栏参数
+	if(keyWord!=null&&$.trim(keyWord)!='')//判断地址栏参数  不为空且有值的时候
+	{
+			$('#kw').val(keyWord);//将地址栏参数回填到输入框
+			$('#btn_search').click();
+	}
 };
-
 
 //根据名称获取地址栏的参数值
 var getUrlParam = function (name) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null) return decodeURI(r[2]); return null;
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]); return null;
 }
-//获取搜索内容
-function search(keyWord){
-		api.ajax({
-				url:baseUrl+'/Elasticsearch/search',
-				method: 'GET',
-				data: {
-					"page":1,
-					"size":2,
-					"keywords":keyWord
-				}
-				},function(ret,err){
-						if(ret){
-								var result=ret.data;
-								if(result){
-										var _html='';
-										for(var i=0;i<result.length;i++) {
-												var item=result[i];
-												//没有图片
-												_html += '\
-												<li class="list-group-item list-item-lg">\
-												  <div class="media-heading mar-no">\
-															<a class="h4 text-primary" href="#">'+item.spec_name_ch+'</a>\
-													</div>\
-													<p class="text-sm">'+item.spec_desc+'</p>\
-												</li>\
-														';
-										}
-										$('.bord-no').html(html);
-								}
-						}else {
-								api.alert({ msg: JSON.stringify(err) });
-						}
-				});
+
+function keyEnter(e){
+	var e = e||event;
+	if(e.keyCode == 13){
+			document.getElementsByName("submit")[0].click();
+	}
 }
-</script> -->
+document.onkeydown = keyEnter;
+function search_click(){
+	var key_word=$('#kw').val();//从输入框里获得关键字
+	if($('#data_table').data('bootstrap.table')){
+			$('#data_table').bootstrapTable('destroy');
+	}
+	if($.trim(key_word)!=''){
+			init_table();
+			load_table();
+	}
+}
+
+function init_table(){
+	$('#data_table').bootstrapTable({
+			//url:baseUrl+'/Elasticsearch/search',//数据源，请求后台的路径
+			data:[],//数据源，json数据
+			toolbar:'#btn_area',//按钮组 这里必须绑定工具栏，不然布局会错乱
+			search:false,//可以搜索
+			sortName:'id',//排序字段
+			sortable:false,//排序设置
+			sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
+			pageList:[5, 10, 20,100,2000,'ALL'],//每页数量组
+			pageSize:10,//默认每页数量
+			pagination:true,//可以分页
+			showPaginationSwitch:false,//
+			 // paginationVAlign:"top",
+			// sidePagination:'server',//服務器端分頁
+			sidePagination:'client',
+			clickToSelect:true,
+			//method:'POST',
+			responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
+					return {
+							"total": res.data.totalNum,//总记录数
+							"rows": res.data.source_data      //数据
+					};
+			},
+			queryParams:function(params){//请求参数，向后台传的数据，修改成后台可以接收的数据格式
+					return {
+							page:params.offset/params.limit,    //页码，就是第几页
+							size:params.limit,                   //每页数量
+							// keywords:'毛竹'  //给定一个查询条件
+							keywords:$('#kw').val()
+					}
+			},
+			cache:false,//是否使用緩存
+			columns:[//列数据
+					{
+							field:'spec_name_ch',//数据列
+							title:'中文名',//数据列名称
+							sortable:true,//可排序
+							align:'center',//水平居中
+							valign:'middle',//垂直居中
+							cellStyle:function(value,row,index,field){
+									return{css:{'min-width':'80px'} };
+							}
+					},
+					{
+							field:'spec_name_ld',//数据列
+							title:'拉丁名',//数据列名称
+							sortable:true,//可排序
+							align:'center',//水平居中
+							valign:'middle',//垂直居中
+							cellStyle:function(value,row,index,field){
+									return{css:{'min-width':'60px'} };
+							}
+					},
+					{
+							field:'spec_domestic',//数据列
+							title:'分布',//数据列名称
+							sortable:true,//可排序
+							visible:false,
+							align:'center',//水平居中
+							valign:'middle',//垂直居中
+							cellStyle:function(value,row,index,field){
+									return{css:{'min-width':'60px'} };
+							}
+					},
+					{
+							field:'spec_desc',//数据列
+							title:'描述',//数据列名称
+							sortable:true,//可排序
+							align:'center',//水平居中
+							valign:'middle',//垂直居中
+							cellStyle:function(value,row,index,field){
+									return{css:{'min-width':'100px','max-width':'100px','word-break': 'break-all'}};
+							}
+					},
+					{
+							field:'',//数据列
+							title:'操作',//数据列名称
+							width:'90px',
+							align:'center',//水平居中
+							valign:'middle',//垂直居中
+							formatter:function(value,row,index){//格式化，自定义内容
+									var html = '';
+									// html+= '<a  href="javascript:void(0);" onclick="check()">查看</a>';
+									// html+='<button  onclick="check(\''+row.specId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+									html+= '<a href="specdetail.html?specId='+row.spec_id+'" target="_blank" onclick="check(\''+row.spec_id+'\')" style="color: #333;text-decoration:underline ">查看</a>';
+									return html;
+							},
+							cellStyle:function(value,row,index,field){
+									return{css:{'min-width':'100px'}};
+							}
+					}
+			]
+	});
+
+}
+//获取输入值
+function load_table(){
+	var formData=new Object();
+	var page=0;
+	var size=0;
+	var keywords=$('#kw').val();
+	formData.page=page;
+	formData.size=size;
+	formData.keywords=keywords;
+	$.ajax({
+			url: baseUrl+'/Elasticsearch/search',
+			type:'GET',
+			dataType:"JSON",		                //返回数据类型
+			data: formData,
+			success: function (res) {
+					if (res.code === 200){
+							var searchdata = res.data.source_data;
+							$('#data_table').bootstrapTable('load',searchdata);
+							$('#data_table').bootstrapTable('resetView');
+					}
+			}
+	}) ;
+}
+function check(id){
+	$.ajax({
+			url:baseUrl+'/spec/spec_info/?id='+id,		//请求路径
+			type:'GET',			                    //请求方式
+			dataType:"JSON",		                //返回数据类型
+			contentType: 'application/json',        //数据类型
+			success:function(res){
+					if(res.code===200){
+
+					}
+			}
+	})
+}
+function changed(){
+	var name = $api.val($api.dom("input[name='key']:checked"));
+	if(name == ""){
+			return;
+	}
+	if(!name.match("^[a-zA-Z0-9_\u4e00-\u9fa5]+$")){
+			// alert("请不要输入特殊字符!");
+			$.niftyNoty({
+					type: 'danger',                //类型
+					icon : 'pli-like-2 icon-2x',    //图标
+					message : '请不要输入特殊字符!',           //显示的内容
+					container : 'floating',         //不管他，就这样写
+					timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
+			});
+			$("input[name='key']").val("");
+	}
+	return;
+}
+
+
+</script>
 </html>
