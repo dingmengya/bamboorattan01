@@ -4,88 +4,187 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>个人中心</title>
+    <title>个人中心页</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-        .text-white {
-            color: #ffffff !important;
-        }
-    </style>
-    <!--jQuery [ REQUIRED ]-->
-    <script src="script/jquery-2.2.4.min.js"></script>
-    <!--BootstrapJS [ RECOMMENDED ]-->
-    <script src="script/bootstrap.min.js"></script>
+
+        <style type="text/css">
+            .text-white {
+                color: #dfffdf !important;
+            }
+            .aui-content {
+              background-color: #fff !important
+            }
+            .aui-bg-info{
+              background-color: #dfffdf !important
+
+            }
+            .aui-list-item{
+              background-color: #fff;
+              display: flex;
+              align-items:center;
+              padding:0.5rem 0.5rem
+
+            }
+
+            img.aui-img-round {
+              position: relative;
+              padding: 29px 0 0 -49px;
+              border-radius: 50%;
+              top:50%;
+              left:32%;
+              width:128px ;
+              height:128px ;
+            }
+
+
+        </style>
 </head>
 <body>
-    <section class="aui-content">
+    <!-- 顶部 -->
+    <section class="aui-content" id="user-info">
+        <div class="aui-list aui-media-list aui-list-noborder aui-bg-info">
+            <img src="../image/icon-png/my-aw.jpg" class="aui-img-round" onclick="fngetPicture()">
+        </div>
+    </section>
+
+    <section class="aui-content" id="user">
         <ul class="aui-list aui-list-in aui-margin-b-15">
             <li class="aui-list-item">
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title" id="userAcct">用户账号</div>
+              <div class="aui-list-item-inner aui-list-item-arrow">
+                   <div class="aui-list-item-title">用户姓名</div>
+                   <div style="text-align:right">用户1</div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title" id="userName">用户名</div>
+                    <div class="aui-list-item-title">用户角色</div>
+                    <div style="text-align:right">用户1</div>
+               </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">所在部门</div>
+                    <div style="text-align:right">用户1</div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title" id="userPwd">用户密码</div>
+                    <div class="aui-list-item-title">用户邮箱</div>
+                    <div style="text-align:right">用户1</div>
                 </div>
             </li>
             <li class="aui-list-item">
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title" id="roleName">用户角色</div>
+                <div class="aui-list-item-inner aui-list-item-arrow" onclick="setting()">
+                    <div class="aui-list-item-title">设置</div>
                 </div>
             </li>
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title" id="userUnit">所在部门</div>
-                </div>
-            </li>
-            <div onclick="openFrame">登录</div>
-
         </ul>
     </section>
-</body>
-
+    <script type="text/javascript" src="../script/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../script/bootstrap.min.js"></script>
+  </body>
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/ipaddress.js"></script>
 <script type="text/javascript">
 apiready = function(){
-  // var userAcct = $api.byId('userAcct');
-  // var userName = $api.byId('userName');
-  // var userPwd = $api.byId('userPwd');
-  // var roleName = $api.byId('roleName');
-  // var userUnit = $api.byId('userUnit');
-
+  api.parseTapmode();
+  var userId = api.getGlobalData({
+    key: 'userId'
+  });
+  loadUsers(userId);
+  
 };
 
-    function goback () {
-        api.closeWin({name:'frame3.html'});
-    }
 
-    function openFrame(){
-      api.openFrame({
-          name: '',
-          url: '',
-          rect: {
-              x: 0,
-              y: 0,
-              w: 320,
-              h: 480
-          },
-          pageParam: {
-              name: 'test'
-          },
-          bounces: true,
-          bgColor: 'rgba(0,0,0,0)',
-          vScrollBarEnabled: true,
-          hScrollBarEnabled: true
-      });
+var baseUrl="http://47.111.135.7:8081";
+// console.log(window.location.href);
+function loadUsers(userId){
+  api.ajax({
+      url: baseUrl+'/user/findId/'+userId,
+      method: 'GET',
+      dataType:'json',
+      headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+      },
+      data: {
+        values: {
+         name: 'elements'
+       }
+      }
+  },function(ret, err){
+      if (ret) {
+        // console.log("ret:"+ret);
+          var userMessage = ret.data;
+          var html = '';
+          if(userMessage!=null){
+            html+='\
+            <ul class="aui-list aui-list-in aui-margin-b-15">\
+            <li class="aui-list-item">\
+            <div class="aui-list-item-title">用户姓名</div>\
+            <div style="text-align:right">'+userMessage.realName+'\
+            </div>\
+            </li>\
+            <li class="aui-list-item">\
+            <div class="aui-list-item-title">用户角色</div>\
+            <div style="text-align:right">'+userMessage.roles.roleName+'\
+            </div>\
+            </li>\
+            <li class="aui-list-item">\
+            <div class="aui-list-item-title">所在部门</div>\
+            <div style="text-align:right">'+userMessage.userUnit+'\
+            </div>\
+            </li>\
+            <li class="aui-list-item">\
+            <div class="aui-list-item-title">用户邮箱</div>\
+            <div style="text-align:right">'+userMessage.mailAcct+'\
+            </div>\
+            </li>\
+            <li class="aui-list-item">\
+            <div class="aui-list-item-inner aui-list-item-arrow" onclick="setting()">\
+            <div class="aui-list-item-title">设置</div>\
+            </div>\
+            </li>\
+            </ul>\
+            '
+            $('#user').html(html);
+          }
+
+      } else {
+          // alert( JSON.stringify( err ) );
+      }
+  });
+
+}
+
+function fngetPicture(){
+  api.getPicture({
+      sourceType: 'library',
+      encodingType: 'jpg',
+      mediaValue: 'pic',
+      destinationType: 'base64',
+      quality: 50,
+      targetWidth: 750,
+      targetHeight: 750
+  }, function(ret, err) {
+      if (ret) {
+          $api.attr($api.dom('img'),'src', ret.base64Data)
+      } else {
+          alert(JSON.stringify(err));
+      }
+  });
+}
+function setting(){
+  api.openWin({
+      name: 'setting',
+      url: './setting.html',
+      pageParam: {
+          name: 'test'
+      }
+  });
 
 
-    }
+}
+
 
 </script>
 </html>

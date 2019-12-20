@@ -67,10 +67,13 @@ $(function () {
     initNav();
     //退出
     $("#logout").on('click',logout);
+    // console.log(window.location.href);
 });
 // $("#logout").on('click',logout);
  //退出
  function logout() {
+// console.log(window.location.href);
+
      $.ajax({
          url: baseUrl + '/user/logOut',		//请求路径
          type: 'POST',			            //请求方式
@@ -101,7 +104,7 @@ $(function () {
                      container: 'floating',
                      timer: 2000
                  });
-                 window.location.href = "../../login.html";
+                 window.location.href = "login.html";
              } else if (res.code === 404) {
                  window.location.href = '../../page-404.html';
              }

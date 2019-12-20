@@ -23,7 +23,8 @@
 </head>
 <body>
   <header class="aui-bar aui-bar-nav" id="aui-header">
-      <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+
+      <a class="aui-btn aui-pull-left" type="button" name="Submit" value="返回上一页" onclick="javascript:window.history.back(-1);">
           <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title" id="specNameCh">刚竹</div>
@@ -64,6 +65,8 @@ apiready = function(){
   var specId=getUrlParam('specId');
   loadSpec(specId);
 };
+
+
 //根据名称获取地址栏的参数值
 var getUrlParam = function (name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -114,10 +117,6 @@ function loadSpec(specId){
                 }
               }
           });
-      }
-      function closeWin(){
-        api.closeWin({
-        });
       }
 </script>
 

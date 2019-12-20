@@ -55,6 +55,7 @@
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
     apiready = function () {
 
@@ -64,7 +65,70 @@
           color: '#6ab494'
       });
       funIniGroup();
+      api.addEventListener({
+          name: 'keyback'
+      }, function(ret, err){
+          if( ret ){
+            // console.log("ret:"+ret);
+            api.closeToWin({
+                name: 'root'
+            });
+
+          }else{
+               alert( JSON.stringify( err ) );
+          }
+      });
+
+
+      api.addEventListener({
+
+      name: 'keyback'
+
+      }, function(ret, err){
+
+      api.toast({
+
+      msg: '再按一次返回键退出'+api.appName,
+
+      duration:2000,
+
+      location: 'bottom'
+
+      });
+
+
+
+      api.addEventListener({
+
+      name: 'keyback'
+
+      }, function(ret, err){
+
+      api.closeWidget({
+
+      id: 'A6018984412084', //这里改成自己的应用ID
+
+      retData: {name:'closeWidget'},
+
+      silent:true
+
+      });
+
+      });
+
+
+
+      setTimeout(function(){
+
+      exitApp();
+
+      },3000)
+
+      });
+
 };
+
+
     function funIniGroup(){
         var eHeaderLis = $api.domAll('header li'),
             frames = [];
@@ -90,6 +154,7 @@
         }, function (ret, err) {
 
         });
+
     }
 
     // 随意切换按钮
@@ -103,7 +168,10 @@
                 index = i;
             }else{
                 $api.removeCls(eFootLis[i], 'active');
+
+
                 $api.removeCls(eHeaderLis[i], 'active');
+
             }
         }
         $api.addCls( eFootLis[index], 'active');
@@ -112,5 +180,9 @@
             name: 'group',
             index: index
         });
+
+
 }
+
+
 </script>

@@ -102,6 +102,12 @@ function login(){
                     timer: 2000
                 });
                 window.location.href = "index.html";
+                // window.location.href = "frame3.html?userId="+res.data.user.userId;
+                api.setGlobalData({
+                        key: 'userId',
+                        value: res.data.user.userId
+                      });
+
             }else if(res.code === 404){
                 window.location.href='page-page-404.html';
             }
